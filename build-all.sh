@@ -47,8 +47,12 @@ su -c 'virt-install -r 256 \
   --network bridge=virbr0 \
   --boot kernel=$KERNEL,initrd=$INITRD,kernel_args="console=/dev/ttyS0 ds=nocloud" \
   --disk $VM_DISK \
-  --noautoconsole \
+  --graphics vnc,listen=0.0.0.0 --noautoconsole \
   --serial tcp,host=127.0.0.1:5701,mode=bind,protocol=telnet' ps
 
+#virsh vncdisplay $VM_NAME &
+vncviewer :0 &
 telnet 127.0.0.1 5701
+virsh undefine $VM_NAME
+virsh destroy $VM_NAME
 
