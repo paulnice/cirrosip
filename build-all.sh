@@ -45,7 +45,7 @@ su -c 'virt-install -r 256 \
   --autostart \
   --memballoon virtio \
   --network bridge=virbr0 \
-  --boot kernel=$KERNEL,initrd=$INITRD,kernel_args="console=/dev/ttyS0 ds=nocloud" \
+  --boot kernel=$KERNEL,initrd=$INITRD,kernel_args="ds=nocloud" \
   --disk $VM_DISK \
   --graphics vnc,listen=0.0.0.0 --noautoconsole \
   --serial tcp,host=127.0.0.1:5701,mode=bind,protocol=telnet' ps
