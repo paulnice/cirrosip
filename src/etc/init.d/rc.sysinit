@@ -53,7 +53,18 @@ mount -a
 
 mkdir /run/var.tmp
 
-hostname -F /etc/hostname
+# Make static ip from the kernel cmd line
+. /lib/cirros/shlib
+
+parse_cmdline
+
+hostname "$KC_HOSTNAME"
+
+sed -i "s/IPV4_ADDR/$KC_IPV4_ADDR/" /etc/network/interfaces
+sed -i "s/IPV4_MASK/$KC_IPV4_MASK/" /etc/network/interfaces
+sed -i "s/IPV4_GW/$KC_IPV4_GW/" /etc/network/interfaces
+# End of the static ip from the kernel cmd line
+
 
 f="/bin/lxc-is-container" && write_lxc_is_container > "$f" && chmod 755 "$f"
 

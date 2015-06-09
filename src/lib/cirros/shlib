@@ -199,6 +199,10 @@ ipinfo() {
 # KC_VERBOSE: set to '1' if 'verbose' on commandline
 # KC_RAMDISK_ROOT: set to 1 if cmdline said not to mount a root (0 otherwise)
 # KC_INIT: init= variable
+# KC_HOSTNAME: hostname= variable
+# KC_IPV4_ADDR: ipv4_addr= variable
+# KC_IPV4_MASK: ipv4_mask= variable
+# KC_IPV4_GW:   ipv4_gw= variable
 parse_cmdline() {
 	# expects that /dev is mounted/populated
 	KC_VERBOSE=0
@@ -227,6 +231,10 @@ parse_cmdline() {
 			init) KC_INIT="$val";;
 			debug-initramfs) KC_DEBUG_INITRAMFS=1;;
 			verbose) KC_VERBOSE=1;;
+			hostname) KC_HOSTNAME="$val";;
+			ipv4_addr) KC_IPV4_ADDR="$val";;
+			ipv4_mask) KC_IPV4_MASK="$val";;
+			ipv4_gw) KC_IPV4_GW="$val";;
 		esac
 	done
 
