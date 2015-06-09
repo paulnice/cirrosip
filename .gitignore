@@ -1,2 +1,8 @@
 .bzr
 .bzrignore
+buildroot
+buildroot-2015.05
+download
+grubd
+output
+images
